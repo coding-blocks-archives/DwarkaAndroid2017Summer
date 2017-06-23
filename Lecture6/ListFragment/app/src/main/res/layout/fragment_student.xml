@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_green_light"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/studentName"
+        android:layout_width="match_parent"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:layout_height="0sp" />
+
+    <TextView
+        android:id="@+id/studentCourse"
+        android:layout_width="match_parent"
+        android:textSize="32sp"
+        android:layout_weight="1"
+        android:textStyle="bold"
+        android:layout_height="0dp" />
+
+    <TextView
+        android:id="@+id/studentAge"
+        android:layout_width="match_parent"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:layout_height="0dp" />
+</LinearLayout>
