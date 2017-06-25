@@ -14,6 +14,11 @@ public class MainActivity extends AppCompatActivity implements Communicator{
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void changeText(String text) {
         Fragment fragmentB = getSupportFragmentManager().findFragmentById(R.id.fragmentB);
 
