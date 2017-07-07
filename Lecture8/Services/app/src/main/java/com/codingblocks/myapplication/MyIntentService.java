@@ -3,8 +3,10 @@ package com.codingblocks.myapplication;
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 /**
@@ -35,12 +37,25 @@ public class MyIntentService extends IntentService {
         Notification notification = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
 
-            //Only display the notiifcation if SDK version is above jelly bean
+            //Only display the notification if SDK version is above jelly bean
 
-            notification = new Notification.Builder(getBaseContext())
+            PendingIntent pendingIntent = PendingIntent.getActivity(getBaseContext(),
+                    123,new Intent(getBaseContext(),MainActivity.class),
+                    PendingIntent.FLAG_CANCEL_CURRENT);
+
+
+            NotificationCompat.Action action = new NotificationCompat.Action.Builder(android.R.drawable.sym_action_call,
+                    "Call",
+                    pendingIntent)
+                    .build();
+
+             notification = new NotificationCompat.Builder(getBaseContext())
                     .setContentTitle("Title")
                     .setContentText("Description")
                     .setSmallIcon(R.mipmap.ic_launcher)
+                    .addAction(android.R.drawable.ic_menu_send,"Send",pendingIntent)
+                    .addAction(action)
+                    .setContentIntent(pendingIntent)
                     .build();
         }
 

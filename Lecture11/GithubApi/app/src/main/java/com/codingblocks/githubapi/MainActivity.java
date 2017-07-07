@@ -1,8 +1,7 @@
 package com.codingblocks.githubapi;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -39,16 +38,25 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         /*
-        Getting serialized data
+        Getting data
          */
 
 //        Intent i = getIntent();
 //
 //        String receivedUser = i.getStringExtra("USER");
 //        Gson gson = new Gson();
-//
-//
 //        User user = gson.fromJson(receivedUser, User.class);
+
+//        Getting the parcelable data back
+//        ArrayList<User> userArrayList = i.getParcelableArrayListExtra("KEY");
+
+//        Can also put parcelable data into your intent
+//        Intent intent = new Intent(this, MainActivity.class);
+//        ArrayList<User> arrayList = new ArrayList<>();
+//        intent.putParcelableArrayListExtra("KEY",arrayList);
+//
+
+
 
         final RecylerViewAdapter recylerViewAdapter = new RecylerViewAdapter(usersArrayList);
         recyclerView.setAdapter(recylerViewAdapter);

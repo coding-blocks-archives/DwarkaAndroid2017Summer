@@ -1,10 +1,13 @@
 package com.codingblocks.githubapi;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by the-dagger on 05/07/17.
  */
 
-public class User {
+public class User implements Parcelable{
 
     String login,id,avatar_url,url,score;
 
@@ -15,6 +18,26 @@ public class User {
         this.url = url;
         this.score = score;
     }
+
+    protected User(Parcel in) {
+        login = in.readString();
+        id = in.readString();
+        avatar_url = in.readString();
+        url = in.readString();
+        score = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getLogin() {
         return login;
@@ -54,5 +77,19 @@ public class User {
 
     public void setScore(String score) {
         this.score = score;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(login);
+        dest.writeString(id);
+        dest.writeString(avatar_url);
+        dest.writeString(url);
+        dest.writeString(score);
     }
 }

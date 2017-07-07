@@ -35,27 +35,36 @@ public class MainActivity extends AppCompatActivity {
 
         linearLayout.addView(b);
 
+//        MyNewReceiver myNewReceiver = new MyNewReceiver();
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setAction("my_custom_action");
-                intent.putExtra("key", "Notice me senpai!");
 
-                //Sending a custom Local Broadcast
-                LocalBroadcastManager
-                        .getInstance(getBaseContext())
-                        .sendBroadcast(intent);
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int i=0;i<3;i++){
+                            long currTime = System.currentTimeMillis();
+                            while (System.currentTimeMillis() - currTime < 1000);
+                        }
 
-                //Sending a custom Global Broadcast
-//                sendBroadcast(intent);
-
+                        textView.setText("10 seconds have passed");
+                    }
+                });
+                thread.start();
             }
         });
-        intentFilter = new IntentFilter();
-        intentFilter.addAction("my_custom_action");
-        myNewReceiver = new MyNewReceiver();
+//        intentFilter = new IntentFilter();
+//        intentFilter.addAction("my_custom_action");
+//        myNewReceiver = new MyNewReceiver();
+
+        textView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        },3000);
 
     }
 
@@ -65,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         //Registering a local broadcast
-        LocalBroadcastManager
-                .getInstance(this)
-                .registerReceiver(myNewReceiver, intentFilter);
+//        LocalBroadcastManager
+//                .getInstance(this)
+//                .registerReceiver(myNewReceiver, intentFilter);
 
         //Registering a global broadcastReceiver
 //        registerReceiver(myNewReceiver, intentFilter);

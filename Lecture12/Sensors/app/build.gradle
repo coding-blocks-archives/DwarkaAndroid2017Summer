@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
     defaultConfig {
-        applicationId "com.codingblocks.myapplication"
+        applicationId "com.codingblocks.sensors"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
