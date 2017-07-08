@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="twit">#FF43D6FA </color>
+    <color name="black">#FF131313</color>
+    <color name="one"> #FF63CEE9 </color>
+    <color name="two"> #FF87F5C9 </color>
+<color name="white"> #FFFFFFFF</color>
+</resources>
