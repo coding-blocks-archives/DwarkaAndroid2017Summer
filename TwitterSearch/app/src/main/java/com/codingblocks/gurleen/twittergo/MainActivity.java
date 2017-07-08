@@ -82,16 +82,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                        myAdapter = new MyAdapter(resultobj,MainActivity.this);
-                        rv.setAdapter(myAdapter);
-
-
-
-
-
-                    }
-                });
+                        rv.setAdapter(myAdapter);}
+ });
             }
-        };
+        }; }}
+
+
+
+
+                    
+               
 
 
 
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    }
+    
 
 
 
@@ -133,4 +133,3 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-}
