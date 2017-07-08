@@ -1,6 +1,9 @@
-build/
-.idea/
-.gradle/
-gradle/
-*.class
-out/
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
