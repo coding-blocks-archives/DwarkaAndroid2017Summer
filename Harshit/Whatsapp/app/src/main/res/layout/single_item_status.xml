@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+
+    <TextView
+        android:id="@+id/statusName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Person Name"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/statusTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="9:45 pm" />
+
+
+</LinearLayout>
