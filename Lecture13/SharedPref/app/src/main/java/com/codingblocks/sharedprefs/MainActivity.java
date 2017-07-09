@@ -3,6 +3,8 @@ package com.codingblocks.sharedprefs;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.tvInput);
         button = (Button) findViewById(R.id.buttonSave);
 
+
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
 
         String retrievedValue = sharedPreferences.getString(INPUT,"0");
@@ -44,5 +47,28 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText(inputText);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.menuSettings:
+                //Do something
+                break;
+            case R.id.menuDelete:
+                //Do something else
+                break;
+            case R.id.menuAdd:
+                //Do something uniquely else
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
