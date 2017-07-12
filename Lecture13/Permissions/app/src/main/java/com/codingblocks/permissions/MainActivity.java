@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 123);
+//            Intent intent = new Intent();
+//            intent.setAction(Intent.ACTION_CALL);
+//
+//            intent.setData(Uri.parse("tel:9968195588"));
+//
+//            startActivity(intent);
         }
 
     }
@@ -47,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
                                            @NonNull int[] grantResults) {
 
         if (requestCode == 123) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.CALL_PHONE)){
 
+            }
             if (permissions[0].equals(Manifest.permission.CALL_PHONE)
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent();
