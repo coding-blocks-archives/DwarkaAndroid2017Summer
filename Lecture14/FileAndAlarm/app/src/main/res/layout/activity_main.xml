@@ -55,6 +55,13 @@
             android:text="Read from ext file" />
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scheduleAlarm"
+        android:onClick="scheduleAlarm"
+        android:text="Schedule an Alarm"/>
+
     <TextView
         android:id="@+id/tvFileContent"
         android:layout_width="match_parent"

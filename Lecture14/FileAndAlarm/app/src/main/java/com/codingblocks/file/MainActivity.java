@@ -1,5 +1,8 @@
 package com.codingblocks.file;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +17,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import static android.app.AlarmManager.RTC_WAKEUP;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 String content = etContent.getText().toString();
 
                 try {
-                    f = new File(getExternalFilesDir(null),name);
+                    f = new File(Environment.getExternalStorageDirectory(),name);
                     Log.d(TAG, "onClick: " + f.getAbsolutePath());
                     if (!f.exists()){
                         f.createNewFile();
@@ -124,5 +129,26 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void scheduleAlarm(View view) {
+//        Intent intent = new Intent(this,MyReceiver.class);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
+//
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//
+//        alarmManager.set(AlarmManager.RTC_WAKEUP,3000,pendingIntent);
+//
+
+        Intent i = new Intent(this,MyBroadcastReceiver.class);
+
+
+        i.putExtra("KEY",5);
+
+        PendingIntent pi = PendingIntent.getBroadcast(this,123,i,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        alarmManager.set(RTC_WAKEUP,5 * 1000, pi);
     }
 }
