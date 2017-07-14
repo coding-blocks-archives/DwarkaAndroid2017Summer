@@ -1,0 +1,19 @@
+A1.    create database 'shop';
+
+A2.    create table 'products' (
+	Name of the product varchar(20),
+	Price of the product int,
+	Name of manufacturer varchar(20),
+	Quantity int);
+       
+A3.     Insert into products 
+	values (("Apple",100,"Nature",1000),("Mango",50,"Nature",100),("Orange",50,"Nature",100),("Papaya",50,"Nature",100),("Guava",50,"Nature",100),);
+	
+A4.     select * from table
+	where Name of the product = 'apple';
+
+A5.     Update products
+	set price = price - 100
+
+A6.     Delete from products
+	where quantity = 0;
