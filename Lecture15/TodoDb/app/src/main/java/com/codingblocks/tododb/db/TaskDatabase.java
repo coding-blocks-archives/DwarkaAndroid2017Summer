@@ -97,6 +97,20 @@ public class TaskDatabase extends SQLiteOpenHelper {
         return tasks;
     }
 
+    public void deleteTask(long id){
+        getWritableDatabase().delete(TABLE_NAME,
+                COLUMN_ID + " = ? ",
+                new String[]{String.valueOf(id)});
+    }
+
+    public void updateRow(long id, ContentValues cv){
+        getWritableDatabase().update(TABLE_NAME,
+                cv,
+                COLUMN_ID + " = ? ",
+                new String[]{String.valueOf(id)});
+
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(WHEN_UPGRADING_FROM_1_2);

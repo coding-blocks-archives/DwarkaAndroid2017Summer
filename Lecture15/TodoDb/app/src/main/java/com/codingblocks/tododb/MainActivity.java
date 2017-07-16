@@ -1,5 +1,6 @@
 package com.codingblocks.tododb;
 
+import android.content.ContentValues;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.codingblocks.tododb.db.TableTask;
 import com.codingblocks.tododb.db.TaskDatabase;
 import com.codingblocks.tododb.model.Task;
 
@@ -18,6 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Task> tasks;
+    TaskAdapter taskAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText etTask = (EditText) findViewById(R.id.etTask);
         tasks = new ArrayList<>();
 
-        final TaskAdapter taskAdapter = new TaskAdapter(tasks);
+        taskAdapter = new TaskAdapter(tasks);
 
         RecyclerView rvTasks = (RecyclerView) findViewById(R.id.rvTasks);
         rvTasks.setLayoutManager(new LinearLayoutManager(this));
@@ -41,24 +45,60 @@ public class MainActivity extends AppCompatActivity {
                 TaskDatabase tb = new TaskDatabase(MainActivity.this);
 
                 tb.insertTask(newTask);
-                tasks.clear();
-
-                tasks.addAll(tb.getAllTasks());
-
-                taskAdapter.notifyDataSetChanged();
+                update(tb);
 
             }
         });
     }
 
+    public void update(TaskDatabase tb){
+        tasks.clear();
+
+        tasks.addAll(tb.getAllTasks());
+
+        taskAdapter.notifyDataSetChanged();
+    }
+
 
     public class TaskHolder extends RecyclerView.ViewHolder{
         TextView taskName, status;
-
+        LinearLayout llayout;
         public TaskHolder(View itemView) {
             super(itemView);
             taskName = (TextView) itemView.findViewById(R.id.tvTask);
             status = (TextView) itemView.findViewById(R.id.tvStatus);
+            llayout = (LinearLayout) itemView.findViewById(R.id.llayout);
+
+            llayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Task currentTask = tasks.get(getAdapterPosition());
+                    TaskDatabase tdb = new TaskDatabase(MainActivity.this);
+
+                    ContentValues cv = new ContentValues();
+
+                    cv.put(TableTask.COLUMN_IS_DONE, currentTask.isDone() ? 0 : 1);
+
+                    tdb.updateRow(currentTask.getId(),cv);
+
+                    update(tdb);
+
+                }
+            });
+
+
+            llayout.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Task currentTask = tasks.get(getAdapterPosition());
+                    TaskDatabase tdb = new TaskDatabase(MainActivity.this);
+                    tdb.deleteTask(currentTask.getId());
+
+                    update(tdb);
+                    return true;
+                }
+            });
+
         }
     }
 
