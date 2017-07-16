@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16sp"
+    tools:context="com.vaibhav.stepcounter.MainActivity"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textViewInfo"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="110sp"
+        android:layout_marginTop="153dp"
+        android:gravity="center"
+        android:text="Steps"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_weight="0.02" />
+
+    <TextView
+        android:id="@+id/textViewSteps"
+        android:layout_width="163dp"
+        android:layout_height="83dp"
+        android:layout_alignTop="@+id/textViewInfo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="90sp"
+        android:layout_marginTop="62dp"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/colorAccent"
+        android:textSize="80dp"
+        android:layout_weight="0.01" />
+
+</LinearLayout>
