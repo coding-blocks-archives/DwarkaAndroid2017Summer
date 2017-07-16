@@ -1,6 +1,9 @@
 package com.codingblocks.tododb;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rvTasks = (RecyclerView) findViewById(R.id.rvTasks);
         rvTasks.setLayoutManager(new LinearLayoutManager(this));
 
+        final AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+
+
+
         rvTasks.setAdapter(taskAdapter);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +54,19 @@ public class MainActivity extends AppCompatActivity {
 
                 tb.insertTask(newTask);
                 update(tb);
+
+                Intent i = new Intent(getBaseContext(),TaskReceiver.class);
+
+                i.putExtra("TASK",newTask.getTaskName());
+
+                PendingIntent pi = PendingIntent.getBroadcast(getBaseContext(),
+                        1,
+                        i,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+                alarmManager.set(AlarmManager.RTC_WAKEUP,
+                        System.currentTimeMillis() + 10000,
+                        pi);
 
             }
         });
