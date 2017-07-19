@@ -4,3 +4,5 @@ build/
 gradle/
 *.class
 out/
+*/.DS_Store
+.DS_Store
