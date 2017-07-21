@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText taskId = (EditText) findViewById(R.id.taskId);
 
 
-        arrayList.add("Hello");
+//        arrayList.add("Hello");
 
         FirebaseAuth fbAuth = FirebaseAuth.getInstance();
 
